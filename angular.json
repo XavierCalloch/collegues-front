@@ -24,7 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": []
           },
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "collegues-front"
+    }
+  },
+  "defaultProject": "collegues-front",
+  "cli": {
+    "analytics": "df0cdf97-64ab-46b9-bbaa-d8167ec3f8b8"
+  }
 }
