@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/XavierCalloch/collegues-front.svg?branch=master)](https://travis-ci.org/XavierCalloch/collegues-front)
 
+http://XavierCalloch.github.io/collegues-front
+
 # ColleguesFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
