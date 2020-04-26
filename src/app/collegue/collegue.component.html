@@ -1,18 +1,30 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-sm-4 col-xl-2" id="photo">
+    <div class="col-sm-12 col-xl-4" id="photo">
       <img src="{{ col.photoUrl }}" alt="Photo">
     </div>
-    <div class="col-12 col-sm-8 col-xl-10" id="informations">
+    <div class="col-sm-12 col-xl-8" id="informations">
       <p>Matricule {{ col.matricule }}</p>
-      <p>Nom {{ col.nom }}</p>
+      <p>Nom {{ col.nom | uppercase }}</p>
       <p>Prénoms {{ col.prenoms }}</p>
-      <p>Date de naissance {{ col.dateDeNaissance }}</p>
-      <p>Email {{ col.email }}</p>
+      <p>Date de naissance {{ col.dateDeNaissance | date:'dd/MM/yyyy' }}</p>
+      <div *ngIf="modeModification && !modeCreation; else elseBlock">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+      </div>
+      <ng-template #elseBlock>Email {{ col.email }}</ng-template>
+      <div *ngIf="modeModification && !modeCreation">
+        <label for="email">Photo URL</label>
+        <input type="text" id="photo" name="photo">
+      </div>
       <br>
       <br>
-      <button (click)="ajouterCollegue()" type="button" class="btn-btn-link">Créer un nouveau collègue</button>
-      <button (click)="modifierCollegue()" type="button" class="btn-btn-primary">Modifier</button>
+      <a *ngIf="!modeModification && !modeCreation" href="" (click)="ajouterCollegue()">Créer un nouveau
+        collègue</a>
+      <button *ngIf="!modeModification && !modeCreation" (click)="modifierCollegue()" type="button"
+        class="btn-btn-primary">Modifier</button>
+      <button *ngIf="modeModification" (click)="validerCollegue()" type="button"
+        class="btn-btn-primary">Valider</button>
     </div>
   </div>
 </div>

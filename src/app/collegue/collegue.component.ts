@@ -8,16 +8,27 @@ import { Collegue } from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
+  modeCreation = false;
+  modeModification = false;
+
   @Input() col: Collegue;
 
   constructor() { }
 
   ajouterCollegue() {
     console.log('Création d’un nouveau collègue');
+    this.modeCreation = true;
+    this.modeModification = false;
   }
 
   modifierCollegue() {
     console.log('Modification du collègue');
+    this.modeCreation = false;
+    this.modeModification = true;
+  }
+
+  validerCollegue() {
+    console.log('Validation de la modification du collègue');
   }
 
   ngOnInit(): void {

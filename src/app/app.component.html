@@ -1,1 +1,12 @@
-<app-collegue [col]="collegueExemple"></app-collegue>
+<h1 align=center>Administration Collegue</h1>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6" id="rechercheParNom">
+      <app-recherche-collegue-par-nom [matricules]="matriculesExemple"></app-recherche-collegue-par-nom>
+    </div>
+    <div class="col-6" id="collegue">
+      <app-collegue [col]="collegueExemple"></app-collegue>
+    </div>
+  </div>
+</div>
