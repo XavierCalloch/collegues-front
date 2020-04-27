@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
+import { collegueMock } from '../mock/collegues.mock';
 
 @Component({
   selector: 'app-collegue',
@@ -13,7 +15,7 @@ export class CollegueComponent implements OnInit {
 
   @Input() col: Collegue;
 
-  constructor() { }
+  constructor(private _srv: DataService) { }
 
   ajouterCollegue() {
     console.log('Création d’un nouveau collègue');
@@ -29,6 +31,10 @@ export class CollegueComponent implements OnInit {
 
   validerCollegue() {
     console.log('Validation de la modification du collègue');
+  }
+
+  recupererCollegueCourant() {
+    this.col = this._srv.recupererCollegueCourant();
   }
 
   ngOnInit(): void {

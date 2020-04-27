@@ -1,9 +1,8 @@
 <label for="rechercheParNom">Recherche par nom</label>
-<input type="text" id="rechercheParNom" name="rechercheParNom">
-<button (click)="rechercher()" type="button" class="btn-btn-primary">Rechercher</button>
+<input type="text" id="rechercheParNom" name="rechercheParNom" #saisie>
+<button (click)="rechercher(saisie.value)" type="button" class="btn-btn-primary">Rechercher</button>
 <br>
 <br>
 <ul *ngIf="modeRecherche">
-  <li *ngFor="let mat of matricules">{{ mat.matricule }} {{ mat.nom | uppercase }} {{ mat.prenoms }} {{ mat.email }}
-    {{ mat.dateDeNaissance | date:'dd/MM/yyyy' }}</li>
+  <li *ngFor="let mat of matricules">{{ mat.matricule }}</li>
 </ul>

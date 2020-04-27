@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -12,11 +13,12 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   @Input() matricules: Collegue[];
 
-  constructor() { }
+  constructor(private _srv: DataService) { }
 
-  rechercher() {
+  rechercher(nom: string) {
     this.modeRecherche = true;
     console.log('Recherche d\'un collègue par nom');
+    this._srv.rechercherParNom(nom);
   }
 
   ngOnInit(): void {
