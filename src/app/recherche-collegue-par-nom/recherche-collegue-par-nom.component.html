@@ -3,6 +3,8 @@
 <button (click)="rechercher(saisie.value)" type="button" class="btn-btn-primary">Rechercher</button>
 <br>
 <br>
-<ul *ngIf="modeRecherche">
-  <li *ngFor="let mat of matricules">{{ mat.matricule }}</li>
+<ul *ngIf="modeRecherche && listeMatricules">
+  <li *ngFor="let mat of listeMatricules">
+    <button (click)="selectMatricule(mat)" type="button" class="btn-btn-primary">{{mat}}</button>
+  </li>
 </ul>

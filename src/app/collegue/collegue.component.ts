@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { DataService } from '../services/data.service';
-import { collegueMock } from '../mock/collegues.mock';
 
 @Component({
   selector: 'app-collegue',
@@ -14,6 +13,7 @@ export class CollegueComponent implements OnInit {
   modeModification = false;
 
   @Input() col: Collegue;
+  msgErreur: string;
 
   constructor(private _srv: DataService) { }
 
@@ -31,13 +31,18 @@ export class CollegueComponent implements OnInit {
 
   validerCollegue() {
     console.log('Validation de la modification du collègue');
-  }
-
-  recupererCollegueCourant() {
-    this.col = this._srv.recupererCollegueCourant();
+    this.modeCreation = false;
+    this.modeModification = false;
   }
 
   ngOnInit(): void {
+    this._srv.abonnementCollegueEnCours()
+      .subscribe(collegue => this.col = collegue,
+        err => this.msgErreur = 'Erreur');
+  }
+
+  select(c: Collegue) {
+    this._srv.selectionnerCollegue(c);
   }
 
 }
