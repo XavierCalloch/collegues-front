@@ -11,34 +11,45 @@ export class CollegueComponent implements OnInit {
 
   modeCreation = false;
   modeModification = false;
+  modeValidation = false;
 
   @Input() col: Collegue;
   msgErreur: string;
 
   constructor(private _srv: DataService) { }
 
+  ngOnInit(): void {
+    this._srv.abonnementCollegueEnCours()
+      .subscribe(collegue => this.col = collegue,
+        err => this.msgErreur = 'Erreur lors de l\'abonnement au flux de données');
+  }
+
   ajouterCollegue() {
     console.log('Création d’un nouveau collègue');
     this.modeCreation = true;
     this.modeModification = false;
+    this.modeValidation = false;
   }
 
   modifierCollegue() {
     console.log('Modification du collègue');
     this.modeCreation = false;
     this.modeModification = true;
+    this.modeValidation = false;
   }
 
   validerCollegue() {
     console.log('Validation de la modification du collègue');
     this.modeCreation = false;
     this.modeModification = false;
+    this.modeValidation = true;
   }
 
-  ngOnInit(): void {
-    this._srv.abonnementCollegueEnCours()
-      .subscribe(collegue => this.col = collegue,
-        err => this.msgErreur = 'Erreur');
+  retourAccueil() {
+    console.log('Retour accueil');
+    this.modeCreation = false;
+    this.modeModification = false;
+    this.modeValidation = false;
   }
 
   select(c: Collegue) {

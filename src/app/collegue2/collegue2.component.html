@@ -1,0 +1,45 @@
+<form #etatForm="ngForm">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-xl-4" id="photo">
+        <img src="{{ col.photoUrl }}" alt="URL photo collègue">
+      </div>
+      <div class="col-sm-12 col-xl-8" id="informations">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" name="nom" [(ngModel)]="col.nom" #etatNom="ngModel" required>
+        <div *ngIf="etatNom.dirty && etatNom.invalid">
+          Le nom est obligatoire!
+        </div>
+        <br>
+        <label for="prenoms">Prénoms</label>
+        <input id="prenoms" type="text" name="prenoms" [(ngModel)]="col.prenoms" #etatPrenoms="ngModel" required>
+        <div *ngIf="etatPrenoms.dirty && etatPrenoms.invalid">
+          Les prénoms sont obligatoires!
+        </div>
+        <br>
+        <label for="dateDeNaissance">Date de naissance</label>
+        <input id="dateDeNaissance" type="text" name="dateDeNaissance" [(ngModel)]="col.dateDeNaissance"
+          #etatDateNaiss="ngModel" required>
+        <div *ngIf="etatDateNaiss.dirty && etatDateNaiss.invalid">
+          La date de naissance est obligatoire!
+        </div>
+        <br>
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" [(ngModel)]="col.email" #etatEmail="ngModel" required>
+        <div *ngIf="etatEmail.dirty && etatEmail.invalid">
+          L'email est obligatoire!
+        </div>
+        <br>
+        <label for="photoUrl">Photo URL</label>
+        <input id="photoUrl" type="text" name="photoUrl" [(ngModel)]="col.photoUrl" #etatPhotoUrl="ngModel" required
+          minlength="7">
+        <div *ngIf="etatPhotoUrl.dirty && etatPhotoUrl.invalid">
+          L'URL de la photo est obligatoire et doit contenir au moins 7 caractères
+        </div>
+        <br>
+        <button *ngIf="etatForm.valid" type="reset"
+          (click)="creerCollegue(col.nom, col.prenoms, col.email, col.dateDeNaissance, col.photoUrl)">Créer</button>
+      </div>
+    </div>
+  </div>
+</form>

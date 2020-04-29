@@ -26,7 +26,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
   selectMatricule(matricule: string) {
     this._srv.selectCollegueParMatricule(matricule)
       .subscribe(col => {},
-        err => {});
+        err => console.log('Aucun collègue trouvé pour le matricule fourni'));
   }
 
   ngOnInit(): void {
